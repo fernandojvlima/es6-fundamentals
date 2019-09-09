@@ -114,4 +114,29 @@ console.log(filter); //Find
 var find = arr.find(function (item) {
   return item === 4;
 });
-console.log(find);
+console.log(find); //Arrow function is a short form to express a function, usually not named, very commmom after ES.
+
+var array = [100, 200, 250, 345, 500]; //Convencional Way to MAP ***
+
+var arrayMap = array.map(function (item) {
+  return item * 2;
+});
+console.log(arrayMap); //Same using Arrow Function ***
+
+var arrayMapArrowF = array.map(function (item) {
+  return item * 2;
+});
+console.log(arrayMapArrowF); //very commomm in callbacks and simple functions.
+//Another commomm aplication is with functions as a const:
+
+function test1() {
+  return '1,2,3,4,5,6';
+}
+
+console.log(test1);
+
+var test2 = function test2() {
+  return [1, 2, 3, 4, 5, 6];
+};
+
+console.log(test2());
