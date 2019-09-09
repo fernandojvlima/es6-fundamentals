@@ -1,7 +1,5 @@
 # es6-fundamentals
-repository dedicated to features of ES6 and ES7 and ES8, material used in the Rocket Seat Course.
-
-ES6 Readme
+Repository dedicated to features of ES6 and ES7 and ES8, material used in the Rocket Seat Course.
 
 -> Install node from nodes.org (its version is indicated)
 To check the version : node  - - version
