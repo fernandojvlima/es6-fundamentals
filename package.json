@@ -1,0 +1,16 @@
+{
+  "name": "es6-fundamentals",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/fernandojvlima/es6-fundamentals.git",
+  "author": "Fernando Lima <fernandojvlima@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0"
+  },
+  "scripts": {
+    "dev": "babel ./main.js -o ./bundle.js -w"
+  }
+}
