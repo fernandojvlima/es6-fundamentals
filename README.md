@@ -104,3 +104,69 @@ Yarn add babel-loader -D
 
 At this point, you can go to package.json  and change the “dev”: “webpack —mode=development -w“
 
+In the Chapter 2, Webpack dev server: let’s creat a folder in the root called public, and src 
+All code  js will transferred to this folder (src), 
+To public folder we will transfer the files without tracking.
+
+Changing the files to src, its necessary to change the input and output from  webpack-config:
+ entry: './src/main.js',
+    output: 
+{
+        path: __dirname + '/public',
+        filename: 'bundle.js',
+},
+
+-> Add dependence Webpack-dev-server
+Yarn add webpack-dev-server -D  
+
+After installed, go to web pack.config to write down:
+
+(After the entry above)
+devServer: 
+{
+        contentBase: __dirname + '/public'
+ },
+
+-> In the package.json:
+"scripts": 
+{
+    "dev": "webpack-dev-server --mode=development"
+ }
+Note: to work with the project offline
+
+After this process a server will run (8080)…
+ If you send the code to production, so you run :
+“build”: “webpack —mode=production”
+the cmd: yarn build 
+
+With the server each update will be processed straight.
+
+At this moment of the project, we are going to work with ES8, with the concepts of Async and Await.
+
+
+Add the plugin:
+Yarn add @babel/plugin-transform-async-to-generator -D
+
+Add polyfill
+Yarn add @babel/polyfill -D
+
+In the babelrc;
+  "@babel/plugin-transform-async-to-generator"
+
+In the webpack.config.js:
+entry: [ '@babel/polyfill','./src/main.js'],
+
+After theses procedures, we are able to use async and await.
+
+Now that we have Async and Await Working, so we will do requisition to API`s through this feature using Axios.
+
+Add Axios
+yarn add axios 
+
+In the main.js, import it:
+Import axios from ‘axios’ ;
+
+
+
+
+
