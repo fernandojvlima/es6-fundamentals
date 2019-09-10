@@ -1,5 +1,7 @@
 "use strict";
 
+var _functions = require("./functions");
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -230,4 +232,16 @@ var user2 = _objectSpread({}, user, {
   name: 'David'
 });
 
-console.log(user2);
+console.log(user2); //Template Literals ` ` 
+
+var nameLiterals = 'Robert';
+var ageLiterals = 25;
+console.log("Meu nome \xE9 ".concat(nameLiterals, "  e tenho ").concat(ageLiterals, " anos")); //Short Sintax, used when the name of the variable is the same of the name of the value.
+// const userShort = {
+//     name, //name: name,
+//     age1, //age1: age1,
+//     empresa: 'Rockeseat'
+// };
+//Using Export And Import From Webpack
+
+console.log((0, _functions.sumTest)(13, 14));

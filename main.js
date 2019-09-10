@@ -175,3 +175,22 @@ console.log(arrJoined);
 
 const user2 = {...user, name:'David'};
 console.log(user2);
+
+//Template Literals ` ` 
+
+
+const nameLiterals = 'Robert';
+const ageLiterals = 25;
+console.log(`Meu nome é ${nameLiterals}  e tenho ${ageLiterals} anos`);
+
+//Short Sintax, used when the name of the variable is the same of the name of the value.
+// const userShort = {
+//     name, //name: name,
+//     age1, //age1: age1,
+//     empresa: 'Rockeseat'
+// };
+
+//Using Export And Import From Webpack
+import {sumTest} from './functions';
+console.log(sumTest(13,14));
+
