@@ -1,4 +1,4 @@
-
+alert('Opa');
 //Working with classes
 class TodoList {
     constructor(){
@@ -192,5 +192,31 @@ console.log(`Meu nome é ${nameLiterals}  e tenho ${ageLiterals} anos`);
 
 //Using Export And Import From Webpack
 import {sumTest} from './functions';
-console.log(sumTest(13,14));
+console.log(sumTest(23,14));
 
+import {sub} from './functions';
+console.log(sub(20,10));
+
+//You can rename using "as"
+//You can import all function using for example:
+// import * as functions from functions.js
+
+//Working with promises and async and await
+
+
+import axios from 'axios';
+
+class Api {
+
+    static async getUserInfo(username) {
+        try{
+            const response = await axios.get(`https://api.github.com/users/${username}`);
+            console.log(response);
+        } catch (err) {
+            console.warn('Erro na requisição');
+        }     
+    }
+}
+
+Api.getUserInfo('fernandojvlima');
+Api.getUserInfo('fernandojvlima4444');
