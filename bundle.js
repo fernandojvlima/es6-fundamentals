@@ -1,5 +1,11 @@
 "use strict";
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
@@ -126,8 +132,15 @@ console.log(arrayMap); //Same using Arrow Function ***
 var arrayMapArrowF = array.map(function (item) {
   return item * 2;
 });
-console.log(arrayMapArrowF); //very commomm in callbacks and simple functions.
+console.log(arrayMapArrowF);
+
+var soma1 = function soma1() {
+  var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 8;
+  return a + b;
+}; //very commomm in callbacks and simple functions.
 //Another commomm aplication is with functions as a const:
+
 
 function test1() {
   return '1,2,3,4,5,6';
@@ -140,3 +153,81 @@ var test2 = function test2() {
 };
 
 console.log(test2());
+
+function soma(a) {
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
+  return a + b;
+}
+
+console.log(soma(2)); //Unstructuring ES
+
+var user = {
+  name: 'Fernando',
+  age: 36,
+  address: {
+    street: 291,
+    number: 121,
+    zone: 'one'
+  }
+};
+var name = user.name,
+    zone = user.address.zone;
+console.log(name);
+console.log(zone);
+
+function showName(_ref) {
+  var name = _ref.name,
+      age = _ref.age;
+  console.log(name, age);
+}
+
+showName(user);
+var number = user.address.number;
+console.log(number); //Rest and Spread ES, to take the rest of a unstructuring for example.
+//REST (... )
+
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+var a = numbers[0],
+    b = numbers[1],
+    c = numbers[2],
+    resto = numbers.slice(3);
+console.log(a);
+console.log(b);
+console.log(c);
+console.log(resto);
+
+function sum1() {
+  for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+    params[_key] = arguments[_key];
+  }
+
+  return params.reduce(function (total, next) {
+    return total + next;
+  });
+}
+
+console.log(sum1(1, 2, 3, 4, 5, 6, 100));
+
+function sum2(a, b) {
+  for (var _len2 = arguments.length, params = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+    params[_key2 - 2] = arguments[_key2];
+  }
+
+  console.log(params.reduce(function (total, next) {
+    return total + next;
+  }));
+  console.log(a, b);
+}
+
+sum2(10, 20, 1, 2, 3, 4, 56, 7); //Spread , to join different arrays for example
+
+var arra10 = [1, 2, 3, 4, 5];
+var arra11 = [6, 7, 8, 9, 10];
+var arrJoined = [].concat(arra10, arra11);
+console.log(arrJoined); //using a existing user to create a new one similar
+
+var user2 = _objectSpread({}, user, {
+  name: 'David'
+});
+
+console.log(user2);

@@ -90,6 +90,8 @@ console.log(arrayMap);
 //Same using Arrow Function ***
 const arrayMapArrowF = array.map(item => item*2);
 console.log(arrayMapArrowF);
+
+const soma1 = (a=10, b=8) => a + b;
 //very commomm in callbacks and simple functions.
 
 //Another commomm aplication is with functions as a const:
@@ -101,3 +103,75 @@ console.log(test1);
 const test2 = () => [1,2,3,4,5,6];
 
 console.log(test2());
+
+function soma(a,b=6){
+    return a+b;
+}
+
+console.log(soma(2));
+
+//Unstructuring ES
+const user = {
+    name: 'Fernando',
+    age: 36,
+    address: {
+        street: 291,
+        number: 121,
+        zone: 'one' 
+    },
+};
+
+const {name, address: {zone} } = user;
+console.log(name);
+console.log(zone);
+
+
+function showName( {name, age }) {
+    console.log(name, age);
+}
+
+showName(user);
+
+
+const { address: { number } } = user;
+console.log(number); 
+
+
+//Rest and Spread ES, to take the rest of a unstructuring for example.
+
+
+//REST (... )
+const numbers = [1,2,3,4,5,6,7,8];
+
+const [a,b,c, ...resto] = numbers;
+console.log(a);
+console.log(b);
+console.log(c); 
+console.log(resto);
+
+function sum1(...params) {
+    return params.reduce((total, next)  => total+next);
+}
+
+console.log(sum1(1,2,3,4,5,6,100));
+
+function sum2(a,b,...params) {
+    console.log(params.reduce((total,next) => total + next));
+    console.log(a,b);
+
+}
+
+sum2(10,20,1,2,3,4,56,7);
+
+//Spread , to join different arrays for example
+
+const arra10 = [1,2,3,4,5];
+const arra11 = [6,7,8,9,10];
+
+const arrJoined = [...arra10, ...arra11];
+console.log(arrJoined);
+
+//using a existing user to create a new one similar
+
+const user2 = {...user, name:'David'};
+console.log(user2);
