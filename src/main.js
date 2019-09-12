@@ -221,12 +221,13 @@
 // Api.getUserInfo('fernandojvlima');
 // Api.getUserInfo('fernandojvlima4444');
 
-
+import Api from './api';
 class App {
     constructor() {
         this.repositories = [];
 
         this.formEl = document.getElementById('repo-form');
+        this.inputEl =  document.querySelector('input[name=repository]');
         this.listEl= document.getElementById('repo-list'); 
 
         this.registerHandlers();
@@ -236,20 +237,29 @@ class App {
         this.formEl.onsubmit = event => this.addRepository(event);
     }
     
-    addRepository(event) {
+    async addRepository(event) {
         event.preventDefault();
 
+        const repoInput = this.inputEl.value;
+
+        if (repoInput.length === 0) 
+            return;
+        
+        const response = await Api.get(`/repos/${repoInput}`);
+
+        const {name, description, html_url , owner:{ avatar_url } } = response;
+
         this.repositories.push({
-            name: 'rocketseat.com.br',
-            description: 'Tire sua ideia do papel e dê vida à sua startup',
-            avatar_url: 'https://avatars0.githubusercontent.com/u/28929274?s=200&v=4', 
-            html_url: 'https://rocketseat.com.br'
+            name,
+            description,
+            avatar_url, 
+            html_url,
         });
         this.render();
     }
 
     render() {
-        this.listEl.innerHTML = '';
+        this.listEl.innerHTML ='';
 
         this.repositories.forEach(repo => {
             let imgEl = document.createElement('img');
@@ -272,6 +282,5 @@ class App {
         
     }
 }
-
 
 new App();
